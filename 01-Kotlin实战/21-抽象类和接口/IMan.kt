@@ -1,0 +1,3 @@
+interface Iman{
+    fun xiaodidi()
+}
