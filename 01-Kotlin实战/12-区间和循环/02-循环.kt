@@ -14,5 +14,5 @@ fun main(args: Array<String>) {
 		println(a)
 	}
 	
-	println("×ÜÊıÎª£º" + nums3.count())
+	println("æ€»æ•°ä¸º" + nums3.count())
 }
