@@ -1,40 +1,45 @@
-data class Girl(var name:String, var age:Int, var height:Int, var address:String)
-
-var 非诚勿扰数据库 = listOf<Girl>(
-    Girl("百合",18,168,"山东"),
-    Girl("安琪",19,170,"江苏"),
-    Girl("喵喵",25,165,"山东"),
-    Girl("灵儿",20,163,"广东"),
-    Girl("叶子",22,160,"上海")
-)
-
-fun filterGirlsByAddress(address:String){
-    var 某个地区的妹子 = ArrayList<Girl>()
-    for (girl in 非诚勿扰数据库){
-        if (girl.address == address){
-            某个地区的妹子.add(girl)
-        }
+fun main(args: Array<String>) {
+    //filterGirlsByAddress("山东")
+    //filterGirlsByAge(25)
+    //年龄最大的妹子
+    println(非诚勿扰数据库.maxBy { it.age })  //maxBy()高阶函数
+    println("******")
+    //最小，minBy
+    println(非诚勿扰数据库.minBy { it.age })  //minBy()高阶函数
+    //过滤特定条件
+    println("******")
+    println(非诚勿扰数据库.filter{
+        ((it.age>18)  and (it.height >168 ))
+    })
+    println("******")
+    //某个属性映射成新的集合
+    var result = 非诚勿扰数据库.map{
+        "${it.name}:${it.age}"
     }
-    for (girl in 某个地区的妹子){
-        println("${girl.address} ${girl.age}岁的妹子，${girl.name}")
+    println(result)
+    println("******")
+    //any判断有没有这个数据
+    println(非诚勿扰数据库.any{
+        it.age == 20
+    })
+    println("******")
+    //count统计符合条件的有多少个
+    println(非诚勿扰数据库.count{
+        it.age > 22
+    })
+    println("******")
+    //find查找第一个符合条件的妹子，并且返回
+    println(非诚勿扰数据库.find{
+        it.address == "山东"
+    })
+    println("******")
+    //按照某个特征分组
+    var res = 非诚勿扰数据库.groupBy {
+        it.address
     }
-}
-
-fun filterGirlsByAge(age: Int){
-    var 某个年龄以下的妹子 = ArrayList<Girl>()
-    for (girl in 非诚勿扰数据库){
-        if (girl.age < age){
-            某个年龄以下的妹子.add(girl)
-        }
-    }
-    for (girl in 某个年龄以下的妹子){
-        println("${girl.address} ${girl.age}岁的妹子，${girl.name}")
-    }
-}
-
-//加了infix之后，.的调用就变成了空格调用
-infix fun List<Girl>.查找嫩妹子年龄小于(age:Int){
-    filter {
-        it.age < age
-    }.forEach(::println)
+    println(res)
+    println("*********")
+    //DSL 自然语言编程
+    //特定中文编程 函数名前加infix表示可以用空格调用
+    非诚勿扰数据库 查找嫩妹子年龄小于 20
 }
