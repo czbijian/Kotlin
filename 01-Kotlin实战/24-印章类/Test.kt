@@ -1,14 +1,14 @@
 fun main(args:Array<String>){
-    var s1:Son = Son.С����()
+    var s1:Son = Son.小骡子()
 
-    var s2:Son = Son.СС¿()
+    var s2:Son = Son.小小驴()
 
-    var s3:Son = Son.СС¿()
+    var s3:Son = Son.小小驴()
 
     var list = listOf<Son>(s1, s2, s3)
 
     for(v in list){
-        if(v is Son.СС¿){
+        if(v is Son.小小驴){
             v.sayHello()
         }
     }
